@@ -25,3 +25,18 @@ def sortColors(nums):
         if nums[i] == 1:
             nums[i], nums[ptr] = nums[ptr], nums[i]
             ptr += 1
+    # 对方法一的优化
+    i, j = 0, len(nums) - 1
+    count0 = 0
+    while i <= j:
+        if nums[i] == 2:
+            nums[i], nums[j] = nums[j], nums[i]
+            j -= 1  # 数值 2 交换到尾部
+            continue
+        if nums[i] == 1:
+            nums[i] = 0  # 写入 0
+        else:
+            count0 += 1  # 计算 1 的个数
+        i += 1  # 0 只移动指针
+    for index in range(count0, j + 1):
+        nums[index] = 1  # 写入 count 个 1
