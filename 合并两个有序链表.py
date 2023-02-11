@@ -27,3 +27,18 @@ def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optio
         return list1
     list2.next = mergeTwoLists(list1, list2.next)
     return list2
+    # 方法三，对第一种简化
+    if list1 == None or list2 == None:
+        return list1 if list1 else list2
+    head = ListNode(next=list1)
+    p = head
+    while p.next and list2:
+        if list2.val < p.next.val:
+            temp = list2
+            list2 = list2.next
+            temp.next = p.next
+            p.next = temp
+        p = p.next
+    if list2:
+        p.next = list2
+    return head.next
