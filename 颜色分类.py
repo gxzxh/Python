@@ -39,4 +39,4 @@ def sortColors(nums):
             count0 += 1  # 计算 1 的个数
         i += 1  # 0 只移动指针
     for index in range(count0, j + 1):
-        nums[index] = 1  # 写入 count 个 1
+        nums[index] = 1  # 写入 count 个 1      
